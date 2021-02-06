@@ -1,0 +1,21 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sketch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify src/sketch.js -o src/static/bundle.js",
+    "watch": "watchify src/sketch.js -o src/static/bundle.js --debug --verbose",
+    "serve": "http-server ./src"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "browserify": "^16.5.2",
+    "midi-player-js": "^2.0.13",
+    "watchify": "^3.11.1"
+  }
+}
