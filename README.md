@@ -1,2 +1,2 @@
-# sketch-midi-d3
+# sketch-midi-canvas
 Boilerplate for creating visualisations of midi data
