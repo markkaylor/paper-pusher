@@ -11,8 +11,9 @@ const { noteColors } = colors
 
 const dpr = window.devicePixelRatio || 1
 
-canvas.height = SIZE * dpr
-canvas.width = SIZE * dpr
+const rect = canvas.getBoundingClientRect()
+canvas.height = rect.width * dpr
+canvas.width = rect.height * dpr
 ctx.scale(dpr, dpr)
 
 const getMidi = async () => {
