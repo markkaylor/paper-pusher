@@ -6,26 +6,23 @@ const audioContext = new AudioContext()
 const canvas = document.getElementById('canvas')
 let ctx = canvas.getContext('2d')
 
-let SIZE
 function getSize() {
   if (window.innerWidth > 800) {
-    SIZE = window.innerWidth / 2
+    return window.innerWidth / 2
   } else {
-    SIZE = window.innerWidth - 20
+    return window.innerWidth - 20
   }
 }
 
-getSize()
-
-canvas.width = SIZE
-canvas.height = SIZE
+canvas.width = getSize()
+canvas.height = getSize()
 
 window.addEventListener('resize', resizeCanvas, false)
 
 function resizeCanvas() {
   getSize()
-  canvas.width = SIZE
-  canvas.height = SIZE
+  canvas.width = getSize()
+  canvas.height = getSize()
 }
 
 const getMidi = async () => {
@@ -54,7 +51,7 @@ const playAudio = async () => {
 }
 
 const getRandomCoordinate = () => {
-  return Math.floor(Math.random() * SIZE)
+  return Math.floor(Math.random() * getSize())
 }
 
 const input = document.getElementById('input')
