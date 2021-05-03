@@ -6,6 +6,8 @@ const audioContext = new AudioContext()
 const canvas = document.getElementById('canvas')
 let ctx = canvas.getContext('2d')
 
+let isPlaying = false
+
 function getSize() {
   if (window.innerWidth > 800) {
     return window.innerWidth / 2
@@ -55,20 +57,20 @@ const getRandomCoordinate = () => {
 }
 
 const input = document.getElementById('input')
-const button = document.getElementById('button')
+const playButton = document.getElementById('playButton')
 
 const INITIAL_PHRASE = `Practicing an art, no matter how well or badly, is a way to make your soul grow, for heaven's sake. Sing in the shower. Dance to the radio. Tell stories. Write a poem to a friend, even a lousy poem. Do it as well as you possibly can. You will get an enormous reward. You will have created something.`
 let phrase = INITIAL_PHRASE
 let words = phrase.split(' ')
 
+input.textContent = phrase
 input.addEventListener('input', (e) => {
   input.textContent = e.target.value
   phrase = e.target.value
 })
-console.log(phrase)
-input.textContent = phrase
 
-button.addEventListener('click', () => {
+playButton.addEventListener('click', () => {
+  playButton.disabled = true
   words = phrase.split(' ')
   visualize()
 })
