@@ -16,7 +16,6 @@
     "axios": "^0.20.0",
     "browserify": "^16.5.2",
     "midi-player-js": "^2.0.13",
-    "paper": "^0.12.15",
     "watchify": "^3.11.1"
   }
 }

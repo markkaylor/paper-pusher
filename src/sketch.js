@@ -45,6 +45,25 @@ const getRandomCoordinate = () => {
   return Math.floor(Math.random() * SIZE)
 }
 
+const input = document.getElementById('input')
+const button = document.getElementById('button')
+
+const INITIAL_PHRASE = `Practicing an art, no matter how well or badly, is a way to make your soul grow, for heaven's sake. Sing in the shower. Dance to the radio. Tell stories. Write a poem to a friend, even a lousy poem. Do it as well as you possibly can. You will get an enormous reward. You will have created something.`
+let phrase = INITIAL_PHRASE
+let words = phrase.split(' ')
+
+input.addEventListener('input', (e) => {
+  input.textContent = e.target.value
+  phrase = e.target.value
+})
+console.log(phrase)
+input.textContent = phrase
+
+button.addEventListener('click', () => {
+  words = phrase.split(' ')
+  visualize()
+})
+
 const visualize = async () => {
   const midi = await getMidi()
   const Player = new MidiPlayer.Player()
@@ -52,20 +71,17 @@ const visualize = async () => {
   await playAudio()
   Player.play()
 
-  const sentence = `Practicing an art, no matter how well or badly, is a way to make your soul grow, for heaven's sake. Sing in the shower. Dance to the radio. Tell stories. Write a poem to a friend, even a lousy poem. Do it as well as you possibly can. You will get an enormous reward. You will have created something.`
-  const words = sentence.split(' ')
   let i = 0
-
   Player.on('midiEvent', function (event) {
     if (event.name === 'Note on') {
       const x = getRandomCoordinate()
       const y = getRandomCoordinate()
+      const pitch = event.noteName.replace(/([0-9]|[-])/g, '')
+      const [r, g, b] = noteColors[pitch]
 
       ctx.beginPath()
       ctx.moveTo(x, y)
       ctx.font = `${event.velocity}px serif`
-      const pitch = event.noteName.replace(/([0-9]|[-])/g, '')
-      const [r, g, b] = noteColors[pitch]
       ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.${event.velocity})`
       ctx.textAlign = 'center'
       ctx.fillText(words[i], x, y)
@@ -77,5 +93,3 @@ const visualize = async () => {
     }
   })
 }
-
-visualize()

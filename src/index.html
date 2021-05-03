@@ -14,13 +14,50 @@
       .container {
         max-width: 800px;
         margin: 0 auto;
-        height: 100vh;
+        height: 80vh;
         display: flex;
         align-items: center;
+      }
+
+      .input-container {
+        max-width: 400px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      textarea {
+        width: 100%;
+        height: 100px;
+        resize: none;
+      }
+
+      button {
+        width: 80%;
+        margin: 0 auto;
+        padding: 0.5rem;
+        margin-top: 1rem;
+        background-color: white;
+        border: 1px dashed gray;
+        border-radius: 4px;
+      }
+
+      p {
+        font-style: italic;
+      }
+
+      button:hover {
+        cursor: pointer;
       }
     </style>
   </head>
   <body>
+    <div class="input-container">
+      <p>Replace this text with whatever you want, then hit paint</p>
+      <textarea id="input"></textarea>
+      <button id="button">Paint</button>
+    </div>
     <div class="container">
       <canvas id="canvas"></canvas>
     </div>
