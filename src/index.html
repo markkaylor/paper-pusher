@@ -7,15 +7,13 @@
     <style>
       canvas {
         box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-        height: 800px;
-        width: 800px;
       }
 
       .container {
-        max-width: 800px;
-        margin: 0 auto;
-        height: 80vh;
+        width: 100%;
+        margin-top: 2rem;
         display: flex;
+        justify-content: center;
         align-items: center;
       }
 
@@ -54,9 +52,9 @@
   </head>
   <body>
     <div class="input-container">
-      <p>Replace this text with whatever you want, then hit paint</p>
+      <p>Replace this text with whatever you want, then hit play</p>
       <textarea id="input"></textarea>
-      <button id="button">Paint</button>
+      <button id="button">Play</button>
     </div>
     <div class="container">
       <canvas id="canvas"></canvas>

@@ -6,15 +6,27 @@ const audioContext = new AudioContext()
 const canvas = document.getElementById('canvas')
 let ctx = canvas.getContext('2d')
 
-const SIZE = 800
-const { noteColors } = colors
+let SIZE
+function getSize() {
+  if (window.innerWidth > 800) {
+    SIZE = window.innerWidth / 2
+  } else {
+    SIZE = window.innerWidth - 20
+  }
+}
 
-const dpr = window.devicePixelRatio || 1
+getSize()
 
-const rect = canvas.getBoundingClientRect()
-canvas.height = rect.width * dpr
-canvas.width = rect.height * dpr
-ctx.scale(dpr, dpr)
+canvas.width = SIZE
+canvas.height = SIZE
+
+window.addEventListener('resize', resizeCanvas, false)
+
+function resizeCanvas() {
+  getSize()
+  canvas.width = SIZE
+  canvas.height = SIZE
+}
 
 const getMidi = async () => {
   const result = await axios.get('./assets/midi-piano-ostinato.mid', {
@@ -64,6 +76,7 @@ button.addEventListener('click', () => {
   visualize()
 })
 
+const { noteColors } = colors
 const visualize = async () => {
   const midi = await getMidi()
   const Player = new MidiPlayer.Player()
