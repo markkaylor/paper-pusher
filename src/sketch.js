@@ -59,7 +59,7 @@ const getRandomCoordinate = () => {
 const input = document.getElementById('input')
 const playButton = document.getElementById('playButton')
 
-const INITIAL_PHRASE = `Hey 👋, It's me, Mark. I'm a software developer and musician. Make these words more interesting by hitting play.`
+const INITIAL_PHRASE = `Hey 👋, It's me, Mark. I'm a software developer and musician. Hear some of my music and make these words more interesting by hitting play.`
 
 let phrase = INITIAL_PHRASE
 let words = phrase.split(' ')
