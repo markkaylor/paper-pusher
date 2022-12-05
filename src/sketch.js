@@ -59,19 +59,22 @@ const getRandomCoordinate = () => {
 const input = document.getElementById('input')
 const playButton = document.getElementById('playButton')
 
-const INITIAL_PHRASE = `Practicing an art, no matter how well or badly, is a way to make your soul grow, for heaven's sake. Sing in the shower. Dance to the radio. Tell stories. Write a poem to a friend, even a lousy poem. Do it as well as you possibly can. You will get an enormous reward. You will have created something.`
+const INITIAL_PHRASE = `Hey 👋, It's me, Mark. I'm a software developer and musician. Make these words more interesting by hitting play.`
+
 let phrase = INITIAL_PHRASE
 let words = phrase.split(' ')
 
-input.textContent = phrase
+input.innerText = phrase
+
 input.addEventListener('input', (e) => {
-  input.textContent = e.target.value
+  input.innerText = e.target.value
   phrase = e.target.value
 })
 
 playButton.addEventListener('click', () => {
   playButton.disabled = true
   words = phrase.split(' ')
+  console.log(phrase)
   visualize()
 })
 
