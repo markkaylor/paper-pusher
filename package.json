@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "paper-pusher",
   "version": "1.0.0",
   "description": "",
   "main": "sketch.js",
@@ -17,5 +17,8 @@
     "browserify": "^16.5.2",
     "midi-player-js": "^2.0.13",
     "watchify": "^3.11.1"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
   }
 }
